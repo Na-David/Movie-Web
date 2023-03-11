@@ -1,12 +1,11 @@
-
-import './App.css';
+import Button from "./button";
+import styles from "./App.module.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-ddd
-      </header>
+    <div>
+      <h1 className={styles.title}>Weclom</h1>
+      <Button text={"Hyunmoon"}/>
     </div>
   );
 }
