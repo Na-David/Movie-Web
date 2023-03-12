@@ -2,19 +2,24 @@ import Button from "./button";
 import styles from "./App.module.css";
 import { useEffect, useState } from "react";
 
-function App() {
-  const [counter, setCounter] = useState(0);
-  const onClick = () => setCounter(counter+1);
-
-  const iRun = () => console.log("I am Rendered");
+const Hello = () => {
   useEffect(() => {
-    iRun();
+    console.log("created");
+    return () => console.log("destroyed :(");
   },[])
+  return <h1>hello</h1>
+}
+
+function App() {
+
+  const [showing, setShowing] = useState(false);
+  const onClick = () => setShowing(prev => !prev);
+
+
   return (
     <div>
-      <h1 className={styles.title}>{counter}</h1>
-      <button onClick={onClick}>hello</button>
-      <Button onClick={onClick} text={"Hyunmoon"}/>
+      {showing ? <Hello /> : null}
+      <button onClick={onClick}>{showing ? "Hide" : "Show"}</button>
     </div>
   );
 }
