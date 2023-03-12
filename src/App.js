@@ -26,6 +26,10 @@ const App = () => {
         <input onChange={onChange} value={toDo} type="text" placeholder="Write your to do..." />
         <button onClick={onSubmit}>Add</button>
       </form>
+      <hr />
+      <ul>
+        {toDos.map((item, idx) => (<li key={idx}>{item}</li>))}
+      </ul>
     </div>
   );
 }
