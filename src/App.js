@@ -1,25 +1,26 @@
-import Button from "./button";
-import styles from "./App.module.css";
 import { useEffect, useState } from "react";
 
-const Hello = () => {
-  useEffect(() => {
-    console.log("created");
-    return () => console.log("destroyed :(");
-  },[])
-  return <h1>hello</h1>
-}
 
-function App() {
+const App = () => {
 
-  const [showing, setShowing] = useState(false);
-  const onClick = () => setShowing(prev => !prev);
-
+  const [toDo, setToDo] = useState("");
+  const onChange = (e) => {
+    setToDo(e.target.value);
+  }
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (toDo === "") {
+      return;
+    }
+    setToDo("");
+  }
 
   return (
     <div>
-      {showing ? <Hello /> : null}
-      <button onClick={onClick}>{showing ? "Hide" : "Show"}</button>
+      <form>
+        <input onChange={onChange} value={toDo} type="text" placeholder="Write your to do..." />
+        <button onClick={onSubmit}>Add</button>
+      </form>
     </div>
   );
 }
