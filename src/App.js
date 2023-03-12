@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 const App = () => {
 
   const [toDo, setToDo] = useState("");
+  const [toDos, setToDos] = useState([]);
   const onChange = (e) => {
     setToDo(e.target.value);
   }
@@ -12,12 +13,16 @@ const App = () => {
     if (toDo === "") {
       return;
     }
+    setToDos(currentArr => [toDo, ...currentArr])
     setToDo("");
+
   }
+  console.log(toDos);
 
   return (
     <div>
-      <form>
+      <h1>My To Dos ({toDos.length})</h1>
+      <form onSubmit={onSubmit}>
         <input onChange={onChange} value={toDo} type="text" placeholder="Write your to do..." />
         <button onClick={onSubmit}>Add</button>
       </form>
