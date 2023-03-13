@@ -8,17 +8,17 @@ const App = () => {
 
   const getMovies = async() => {
     const response = await fetch(
-      `https://yts.mx/api/v2/list_movies.json?minimum_rating=9&sort_by=year`)
+      `https://yts.mx/api/v2/list_movies.json?minimum_rating=6&sort_by=year`)
     const json = await response.json();
     setMovies(json.data.movies); 
     setLoading(false);
   }
 
   useEffect(() => {
-
     getMovies()
   },[])
-  console.log(movies);
+
+  // console.log(movies);
 
   return (
     <div>
@@ -26,7 +26,7 @@ const App = () => {
       <div>
         {movies.map(movie => 
         <div key={movie.id}>
-          <img src={movie.medium_cover_image} />
+          <img src={movie.medium_cover_image} alt = {"movie img"}/>
           <h2>{movie.title}</h2>
           <p>{movie.summary}</p>
           <ul>
