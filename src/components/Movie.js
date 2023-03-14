@@ -6,7 +6,7 @@ const Movie = ({id, img, title, summary, genres}) => {
         <div>
           <img src={img} alt = {title}/>
           <h2>
-            <Link to ="/movie">{title}</Link>
+            <Link to ={`/movie/${id}`}>{title}</Link>
           </h2>
           <p>{summary}</p>
           <ul>
