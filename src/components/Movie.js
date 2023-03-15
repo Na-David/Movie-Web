@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+import "./Movie.module.css";
 
-const Movie = ({id, img, title, summary, genres}) => {
+const Movie = ({id, img, title, summary, genres, years}) => {
     return (
         <div>
           <img src={img} alt = {title}/>

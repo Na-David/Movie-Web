@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Movie from "../components/Movie";
+import './Home.css';
 
 
 const Home = () => {
@@ -20,13 +21,14 @@ const Home = () => {
     },[])
   
     return (
-      <div>
-        {loading ? <h1>Loading...</h1> : 
-        <div>
+      <div className="container">
+        {loading ? <span>Loading...</span> : 
+        <div className="movies">
           {movies.map((movie) => (
             <Movie
               key= {movie.id} 
               id = {movie.id}
+              years = {movie.years}
               img = {movie.medium_cover_image}
               title = {movie.title}
               summary = {movie.summary}
