@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 import MovieList from "../components/MovieList";
-import MyHeader from "../components/MyHeader";
-import MyButton from "../components/MyButton";
-import './Home.css';
+import MyButton from "../components/MyButton.js";
+import '../App.css';
 
 
 const Home = () => {
 
     const [movies, setMovies] = useState([]);
+    const [currentMovie, setCurrentMovie] = useState((0));
   
     const getMovies = async() => {
       const response = await fetch(
-        `https://yts.mx/api/v2/list_movies.json?minimum_rating=6&sort_by=year`)
+        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8&sort_by=year`)
       const json = await response.json();
       setMovies(json.data.movies); 
     }
@@ -19,26 +19,31 @@ const Home = () => {
     useEffect(() => {
       getMovies()
     },[])
+
+    const handlePrev = () => {
+      setCurrentMovie(currentMovie === 0 ? movies.length -1 : currentMovie -1);
+    }
+    
+    const handleNext = () => {
+      setCurrentMovie(currentMovie === movies.length -1 ? 0 : currentMovie + 1);
+    }
+
   
     return (
-      <div className="container">
-        <div>
-          <MyHeader logo = {"MoonFLEX"}
-          high_rating = {<MyButton text = {"High Rating"} onClick = {highRating()}/>}
-          romance = {<MyButton text = {"Romance"} onClick = {romance()}/>}
-          music = {<MyButton text = {"Music"} onClick = {music()}/>}
-          />
-        </div>
-        <div className="movies">
-          {movies.map((movie) => (
-            <MovieList
+      <div className="slider">
+        <div className="slider_wrapper" >
+          {movies.map((movie, idx) => (
+            <div key = {idx} className = "slider_item">
+              <MovieList
               key= {movie.id} 
               id = {movie.id}
               years = {movie.years}
               img = {movie.medium_cover_image}
               title = {movie.title}
-              summary = {movie.summary}
-              genres = {movie.genres} />))}
+              genres = {movie.genres}
+              rating = {movie.rating}
+               />
+            </div>))}
         </div>
       </div>
     );

@@ -22,13 +22,7 @@ const Home = () => {
   
     return (
       <div className="container">
-        <div>
-          <MyHeader logo = {"MoonFLEX"}
-          high_rating = {<MyButton text = {"High Rating"} onClick = {highRating()}/>}
-          romance = {<MyButton text = {"Romance"} onClick = {romance()}/>}
-          music = {<MyButton text = {"Music"} onClick = {music()}/>}
-          />
-        </div>
+
         <div className="movies">
           {movies.map((movie) => (
             <MovieList

@@ -5,11 +5,11 @@ import MyButton from "../components/MyButton";
 import './Home.css';
 
 
-const Home = () => {
+const HighRating = () => {
 
     const [movies, setMovies] = useState([]);
   
-    const getMovies = async() => {
+    const getHighRatingMovie = async() => {
       const response = await fetch(
         `https://yts.mx/api/v2/list_movies.json?minimum_rating=6&sort_by=year`)
       const json = await response.json();
@@ -17,18 +17,12 @@ const Home = () => {
     }
   
     useEffect(() => {
-      getMovies()
+      getHighRatingMovie()
     },[])
   
     return (
       <div className="container">
-        <div>
-          <MyHeader logo = {"MoonFLEX"}
-          high_rating = {<MyButton text = {"High Rating"} onClick = {highRating()}/>}
-          romance = {<MyButton text = {"Romance"} onClick = {romance()}/>}
-          music = {<MyButton text = {"Music"} onClick = {music()}/>}
-          />
-        </div>
+
         <div className="movies">
           {movies.map((movie) => (
             <MovieList
@@ -45,4 +39,4 @@ const Home = () => {
   
 }
 
-export default Home;
+export default HighRating;
