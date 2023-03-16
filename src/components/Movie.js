@@ -11,7 +11,7 @@ const Movie = ({id, img, title, summary, genres, years}) => {
               <Link to ={`/movie/${id}`}>{title}</Link>
             </h2>
             <h3 className="movie_year">{years}</h3>
-            <p>{summary.length > 235 ? `${summary.slice(0, 235)}` : summary}</p>
+            <p>{summary.length > 235 ? `${summary.slice(0, 235)}...` : summary}</p>
             <ul className="movie_genres">
               {genres.map(g => <li key={g}>{g}</li>)}
             </ul>
