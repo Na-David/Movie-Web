@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
-import "./Movie.css";
+import "./MovieList.css";
 
-const Movie = ({id, img, title, summary, genres, years}) => {
+const MovieList = ({id, img, title, summary, genres, years}) => {
     return (
         <div className="movie">
           <img src={img} alt = {title} className="movie_img"/>
@@ -21,7 +21,7 @@ const Movie = ({id, img, title, summary, genres, years}) => {
     )
 }
 
-Movie.propTypes = {
+MovieList.propTypes = {
     id: PropTypes.number.isRequired,
     img: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -29,4 +29,4 @@ Movie.propTypes = {
     genres: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
-export default Movie;
+export default MovieList;
