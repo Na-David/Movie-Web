@@ -8,13 +8,10 @@ import '../App.css';
 const Home = () => {
 
     const [movies, setMovies] = useState([]);
-    const [romance, setRomance] = useState([]);
-    const [music, setMusic] = useState([]);
-    const [currentMovie, setCurrentMovie] = useState((0));
   
     const getMovies = async() => {
       const response = await fetch(
-        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8&sort_by=year`)
+        `https://yts.mx/api/v2/list_movies.json?minimum_rating=9&sort_by=year`)
       const json = await response.json();
       setMovies(json.data.movies); 
     }
@@ -23,33 +20,8 @@ const Home = () => {
       getMovies();
     },[])
 
-    const getRomance = () => {
-      fetch("https://yts.mx/api/v2/list_movies.json?minimum_rating=8&genre=romance&sort_by=year")
-      .then(response => response.json())
-      .then(romance => setRomance(romance));
-    }
-
-    useEffect(() => {
-      getRomance();
-    },[])
-
-    const getHighRating = () => {
-
-    }
-
-    const getMusic = () => {
-
-    }
-
-
-  
     return (
       <div>
-        <MyHeader logo={"LOGO"} 
-        high_rating={<MyButton text={"High Rating"} onClick={getHighRating}/>}
-        romance={<MyButton text={"Romance"} onClick={getRomance} />}
-        music={<MyButton text={"Music"} onClick={getMusic}/>}/>
-        
         <div className="slider">
         <div className="slider_wrapper" >
           {movies.map((movie, idx) => (
@@ -66,7 +38,6 @@ const Home = () => {
             </div>))}
         </div>
       </div>
-
       </div>
 
     );

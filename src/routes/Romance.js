@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import MovieList from "../components/MovieList";
 import MyHeader from "../components/MyHeader";
 import MyButton from "../components/MyButton";
-import './Home.css';
 
 
 const Home = () => {
@@ -11,7 +10,7 @@ const Home = () => {
   
     const getMovies = async() => {
       const response = await fetch(
-        `https://yts.mx/api/v2/list_movies.json?minimum_rating=6&sort_by=year`)
+        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8&genre=romance&sort_by=year`)
       const json = await response.json();
       setMovies(json.data.movies); 
     }

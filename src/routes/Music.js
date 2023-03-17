@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import MovieList from "../components/MovieList";
 import MyHeader from "../components/MyHeader";
 import MyButton from "../components/MyButton";
-import './Home.css';
+
 
 
 const Home = () => {
