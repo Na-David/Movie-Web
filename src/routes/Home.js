@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import MovieList from "../components/MovieList";
-import MyButton from "../components/MyButton.js";
-import MyHeader from "../components/MyHeader";
 import '../App.css';
 
 
