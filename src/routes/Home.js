@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import MovieList from "../components/MovieList";
 import MyButton from "../components/MyButton.js";
+import MyHeader from "../components/MyHeader";
 import '../App.css';
 
 
 const Home = () => {
 
     const [movies, setMovies] = useState([]);
+    const [romance, setRomance] = useState([]);
+    const [music, setMusic] = useState([]);
     const [currentMovie, setCurrentMovie] = useState((0));
   
     const getMovies = async() => {
@@ -17,20 +20,37 @@ const Home = () => {
     }
   
     useEffect(() => {
-      getMovies()
+      getMovies();
     },[])
 
-    const handlePrev = () => {
-      setCurrentMovie(currentMovie === 0 ? movies.length -1 : currentMovie -1);
+    const getRomance = () => {
+      fetch("https://yts.mx/api/v2/list_movies.json?minimum_rating=8&genre=romance&sort_by=year")
+      .then(response => response.json())
+      .then(romance => setRomance(romance));
     }
-    
-    const handleNext = () => {
-      setCurrentMovie(currentMovie === movies.length -1 ? 0 : currentMovie + 1);
+
+    useEffect(() => {
+      getRomance();
+    },[])
+
+    const getHighRating = () => {
+
     }
+
+    const getMusic = () => {
+
+    }
+
 
   
     return (
-      <div className="slider">
+      <div>
+        <MyHeader logo={"LOGO"} 
+        high_rating={<MyButton text={"High Rating"} onClick={getHighRating}/>}
+        romance={<MyButton text={"Romance"} onClick={getRomance} />}
+        music={<MyButton text={"Music"} onClick={getMusic}/>}/>
+        
+        <div className="slider">
         <div className="slider_wrapper" >
           {movies.map((movie, idx) => (
             <div key = {idx} className = "slider_item">
@@ -46,6 +66,9 @@ const Home = () => {
             </div>))}
         </div>
       </div>
+
+      </div>
+
     );
   
 }
