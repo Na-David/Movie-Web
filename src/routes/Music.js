@@ -11,7 +11,7 @@ const Home = () => {
   
     const getMovies = async() => {
       const response = await fetch(
-        `https://yts.mx/api/v2/list_movies.json?minimum_rating=6&sort_by=year`)
+        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8&genre=music&sort_by=year`)
       const json = await response.json();
       setMovies(json.data.movies); 
     }
@@ -34,7 +34,8 @@ const Home = () => {
               img = {movie.medium_cover_image}
               title = {movie.title}
               summary = {movie.summary}
-              genres = {movie.genres} />))}
+              genres = {movie.genres}
+              rating = {movie.rating} />))}
         </div>
       </div>
     );
