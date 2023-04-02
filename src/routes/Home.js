@@ -20,8 +20,8 @@ const Home = () => {
 
     return (
       <div>
-        <div className="slider">
-        <div className="slider_wrapper" >
+        <div className="container">
+        <div className="movies" >
           {movies.map((movie, idx) => (
             <div key = {idx} className = "slider_item">
               <MovieList
@@ -32,6 +32,7 @@ const Home = () => {
               title = {movie.title}
               genres = {movie.genres}
               rating = {movie.rating}
+              summary= {movie.summary}
                />
             </div>))}
         </div>
